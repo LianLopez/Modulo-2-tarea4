@@ -4,19 +4,16 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-		</script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+	</script>
 	<link rel="stylesheet" href="css/style.css">
-	
 	<script type="text/javascript" src="framework/vue.js"></script>
 	<title>Senate</title>
 </head>
 
 <body>
-	<div id="container">
+	<div class="container" id="app">
 		<header class="wrapper">
 			<div class="item1">
 				<a href="index-html"><img src="img/WhatsApp Image 2019-04-22 at 12.01.11.jpeg" alt="TGIF-logo" class="img-fluid"></a>
@@ -26,41 +23,37 @@
 			</div>
 		</header>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav mr-auto">
-						<li class="nav-item">
-							<a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-								aria-haspopup="true" aria-expanded="false">
-								Congress 113
-							</a>
-							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item active" href="#">Senate</a>
-								<a class="dropdown-item" href="house.html">House</a>
-							</div>
-						</li>
-	
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-								aria-haspopup="true" aria-expanded="false">Attendance</a>
-							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="senate-attendance.html">Senate</a></li>
-								<li><a class="dropdown-item" href="house-attendance.html">House</a></li>
-							</ul>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-								aria-haspopup="true" aria-expanded="false">Party loyalty</a>
-							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="senate-party-loyalty.html">Senate</a></li>
-								<li><a class="dropdown-item" href="house-party-loyalty.html">House</a></li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-			</nav>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Congress 113
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item active" href="#">Senate</a>
+							<a class="dropdown-item" href="house.html">House</a>
+						</div>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Attendance</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" href="senate-attendance.html">Senate</a></li>
+							<li><a class="dropdown-item" href="house-attendance.html">House</a></li>
+						</ul>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Party loyalty</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" href="senate-party-loyalty.html">Senate</a></li>
+							<li><a class="dropdown-item" href="house-party-loyalty.html">House</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</nav>
 		<!--Table container-->
 		<div>
 			<div class="grid-info">
@@ -87,12 +80,9 @@
 				<div class="d-flex justify-content-between">
 					<div>
 						<label>Filter by Party:</label>
-						<label><input type="checkbox" value="R" name="" id="R" checked
-								onchange="obtenerValores()">Republican</label>
-						<label><input type="checkbox" value="D" name="" id="D" checked
-								onchange="obtenerValores()">Democrat</label>
-						<label><input type="checkbox" value="I" name="" id="I" checked
-								onchange="obtenerValores()">Independent</label>
+						<label><input type="checkbox" value="R" name="" id="R" checked onchange="obtenerValores()">Republican</label>
+						<label><input type="checkbox" value="D" name="" id="D" checked onchange="obtenerValores()">Democrat</label>
+						<label><input type="checkbox" value="I" name="" id="I" checked onchange="obtenerValores()">Independent</label>
 					</div>
 					<div>
 						<label for="selectstate">Filter by State:</label>
@@ -164,6 +154,13 @@
 					</tr>
 				</thead>
 				<tbody id="tabla">
+					<tr v-for="value in members">
+						<td>{{value.first_name}} {{value.middle_name}} {{value.last_name}}</td>
+						<td>{{value.party}}</td>
+						<td>{{value.state}}</td>
+						<td>{{value.seniority}}</td>
+						<td>{{value.votes_with_party_pct}}</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
@@ -171,9 +168,17 @@
 			<small>&copy; 2019 TGIF | All Rights Reserved</small>
 		</footer>
 	</div>
-
-	<script src="js/congress_113_senate.js"></script>
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#app',
+			data: {
+				members: {}
+			}
+		});
+	
+	</script>
 	<script src="js/main.js"></script>
+	<script src="js/congress_113_senate.js"></script>
 </body>
 
 </html>

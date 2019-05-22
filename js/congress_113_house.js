@@ -1,7 +1,8 @@
-fetch("https://api.propublica.org/congress/v1/113/house/members.json",
+fetch("https://api.propublica.org/congress/v1/113/senate/members.json",
 
 {method: "GET",
-
+mode:"no-cors",
+cache:"default",
  headers: { "X-API-Key": "cYMTdFJS13jzEeSby2onJewefObRpQKCL6NOReqD" }
 
 })
