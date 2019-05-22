@@ -1,3 +1,4 @@
+function iniciar(){
 function renderTableFiltered(listaFiltrada) {
     return listaFiltrada.map(function(element) {
         var html = ""
@@ -17,9 +18,10 @@ function miFiltro(listacompleta) {
 
 function obtenerValores() {
     if (document.getElementById("tabla")) {
-        var html = renderTableFiltered(miFiltro(data.results[0].members))
+        var html = renderTableFiltered(miFiltro(congressMembers))
         document.getElementById("tabla").innerHTML = html
     }
 }
 
 obtenerValores()
+}
