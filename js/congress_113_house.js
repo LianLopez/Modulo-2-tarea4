@@ -1,21 +1,17 @@
-fetch("https://api.propublica.org/congress/v1/113/senate/members.json",
+fetch("https://api.propublica.org/congress/v1/113/house/members.json",
 
-{method: "GET",
-mode:"no-cors",
-cache:"default",
- headers: { "X-API-Key": "cYMTdFJS13jzEeSby2onJewefObRpQKCL6NOReqD" }
+		{
+			method: "GET",
 
-})
+			headers: { "X-API-Key": "cYMTdFJS13jzEeSby2onJewefObRpQKCL6NOReqD" }
 
- .then(res => res.json())
+		})
 
- .then(data => {
+	.then(res => res.json())
 
-   congressMembers = data.results[0].members;
+	.then(data => {
 
-   console.log(congressMembers)
+		app.members = data.results[0].members;
+	})
 
-   iniciar()
-
- })
- .catch(err => console.log(err));
+	.catch(err => console.log(err));
