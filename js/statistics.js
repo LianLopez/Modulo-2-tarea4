@@ -1,67 +1,66 @@
-var statistics = {
-	"number-of-democrats": 0,
-	"number-of-republicans": 0,
-	"number-of-independents": 0,
-	"total": 0,
-	"democrats-average-votes-with-party": 0,
-	"republicans-average-votes-with-party": 0,
-	"independents-average-votes-with-party": 0,
-	"total-average": 0,
-	"least-engaged": [],
-	"most-engaged": [],
-	"least-loyal": [],
-	"most-loyal": []
-};
+function iniciar() {
+    var statistics = {
+        "number-of-democrats": 0,
+        "number-of-republicans": 0,
+        "number-of-independents": 0,
+        "total": 0,
+        "democrats-average-votes-with-party": 0,
+        "republicans-average-votes-with-party": 0,
+        "independents-average-votes-with-party": 0,
+        "total-average": 0,
+        "least-engaged": [],
+        "most-engaged": [],
+        "least-loyal": [],
+        "most-loyal": []
+    };
 
+    statistics["total"] = app.members.length;
 
-var members = data.results[0].members
-statistics["total"] = members.length
+    var democrats = app.members.filter(member => member.party == "D");
+    var republicans = app.members.filter(member => member.party == "R")
+    var independents = app.members.filter(member => member.party == "I")
 
-var democrats = members.filter(member => member.party == "D");
-var republicans = members.filter(member => member.party == "R")
-var independents = members.filter(member => member.party == "I")
+    statistics["number-of-democrats"] = democrats.length
+    statistics["number-of-republicans"] = republicans.length
+    statistics["number-of-independents"] = independents.length
 
-statistics["number-of-democrats"] = democrats.length
-statistics["number-of-republicans"] = republicans.length
-statistics["number-of-independents"] = independents.length
+    democrats.length > 0 ? statistics["democrats-average-votes-with-party"] = Math.round(democrats.map(member => member.votes_with_party_pct).reduce((memberAnterior, member) => memberAnterior + member) / democrats.length) : true
+    republicans.length > 0 ? statistics["republicans-average-votes-with-party"] = Math.round(republicans.map(member => member.votes_with_party_pct).reduce((memberAnterior, member) => memberAnterior + member) / republicans.length) : true
+    independents.length > 0 ? statistics["independents-average-votes-with-party"] = Math.round(independents.map(member => member.votes_with_party_pct).reduce((memberAnterior, member) => memberAnterior + member) / independents.length) : true
+    members.length > 0 ? statistics["total-average"] = Math.round(app.members.map(member => member.votes_with_party_pct).reduce((memberAnterior, member) => memberAnterior + member) / statistics["total"]) : true
 
-democrats.length > 0 ? statistics["democrats-average-votes-with-party"] = Math.round(democrats.map(member => member.votes_with_party_pct).reduce((memberAnterior, member) => memberAnterior + member) / democrats.length) : true
-republicans.length > 0 ? statistics["republicans-average-votes-with-party"] = Math.round(republicans.map(member => member.votes_with_party_pct).reduce((memberAnterior, member) => memberAnterior + member) / republicans.length) : true
-independents.length > 0 ? statistics["independents-average-votes-with-party"] = Math.round(independents.map(member => member.votes_with_party_pct).reduce((memberAnterior, member) => memberAnterior + member) / independents.length) : true
-members.length > 0 ? statistics["total-average"] = Math.round(members.map(member => member.votes_with_party_pct).reduce((memberAnterior, member) => memberAnterior + member) / statistics["total"]) : true
+    function generarArrayLoyal(ascendente) {
+        var limite = Math.round(app.members.length * 10) / 100
+        var sorteredMembers = []
+        members.sort((a, b) => ascendente ? b.votes_with_party_pct - a.votes_with_party_pct : a.votes_with_party_pct - b.votes_with_party_pct)
+        var i = 0
+        while (i < limite || members[i].votes_with_party_pct == members[i - 1].votes_with_party_pct) {
+            sorteredMembers.push(members[i])
+            i++
+        }
 
-function generarArrayLoyal(ascendente) {
-	var limite = Math.round(members.length * 10) / 100
-	var sorteredMembers = []
-	members.sort((a, b) => ascendente ? b.votes_with_party_pct - a.votes_with_party_pct : a.votes_with_party_pct - b.votes_with_party_pct)
-	var i = 0
-	while (i < limite || members[i].votes_with_party_pct == members[i - 1].votes_with_party_pct) {
-		sorteredMembers.push(members[i])
-		i++
-	}
+        return sorteredMembers
+    }
 
-	return sorteredMembers
+    function generarArrayEngaged(ascendente) {
+        var limite = Math.round(app.members.length * 0.10)
+        var sorteredMembers = []
+        members.sort((a, b) => ascendente ? b.missed_votes_pct - a.missed_votes_pct : a.missed_votes_pct - b.missed_votes_pct)
+        var i = 0
+        while (i < limite || app.members[i].missed_votes_pct == app.members[i - 1].missed_votes_pct) {
+            sorteredMembers.push(app.members[i])
+            i++
+        }
+        return sorteredMembers
+
+    }
+
+    statistics["most-loyal"] = generarArrayLoyal(true)
+    statistics["least-loyal"] = generarArrayLoyal(false)
+    statistics["most-engaged"] = generarArrayEngaged(true)
+    statistics["least-engaged"] = generarArrayEngaged(false)
 }
-
-function generarArrayEngaged(ascendente) {
-	var limite = Math.round(members.length * 10) / 100
-	var sorteredMembers = []
-	members.sort((a, b) => ascendente ? b.missed_votes_pct - a.missed_votes_pct : a.missed_votes_pct - b.missed_votes_pct)
-	var i = 0
-	while (i < limite || members[i].missed_votes_pct == members[i - 1].missed_votes_pct) {
-		sorteredMembers.push(members[i])
-		i++
-	}
-	return sorteredMembers
-
-}
-
-statistics["most-loyal"] = generarArrayLoyal(true)
-statistics["least-loyal"] = generarArrayLoyal(false)
-statistics["most-engaged"] = generarArrayEngaged(true)
-statistics["least-engaged"] = generarArrayEngaged(false)
-
-
+/*
 function generarTabla(key1, key2, page) {
 	var htmlTablaCantidad = ""
 	htmlTablaCantidad += "<tr>"
@@ -103,3 +102,4 @@ function generarTabla(key1, key2, page) {
 		return tabla2
 	}).join("")
 }
+*/

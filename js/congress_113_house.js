@@ -10,8 +10,10 @@ fetch("https://api.propublica.org/congress/v1/113/house/members.json",
 	.then(res => res.json())
 
 	.then(data => {
-
-		app.members = data.results[0].members;
+		var miembrosSinfiltro = data.results[0].members;
+		var members = data.results[0].members;
+		iniciar(miembrosSinfiltro);
+		statistics(members);
 	})
 
 	.catch(err => console.log(err));
