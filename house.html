@@ -76,9 +76,9 @@
 			<div class="d-flex justify-content-between">
 				<div>
 					<label>Filter by Party:</label>
-					<label><input type="checkbox" value="R" name="" id="R" checked onchange="obtenerValores()">Republican</label>
-					<label><input type="checkbox" value="D" name="" id="D" checked onchange="obtenerValores()">Democrat</label>
-					<label><input type="checkbox" value="I" name="" id="I" checked onchange="obtenerValores()">Independient</label>
+					<label><input type="checkbox" value="R" name="party" id="R" checked onchange="obtenerValores()">Republican</label>
+					<label><input type="checkbox" value="D" name="party" id="D" checked onchange="obtenerValores()">Democrat</label>
+					<label><input type="checkbox" value="I" name="party" id="I" checked onchange="obtenerValores()">Independient</label>
 				</div>
 				<div>
 					<label for="selectstate">Filter by State:</label>
@@ -163,16 +163,8 @@
 			<small>&copy; 2019 TGIF | All Rights Reserved</small>
 		</footer>
 	</div>
-	<script type="text/javascript">
-	var app = new Vue({
-		el: '#app',
-		data: {
-			members: {}
-		}
-	});
-	</script>
-	<script src="js/congress_113_house.js"></script>
 	<script src="js/main.js"></script>
+	<script src="js/congress_113_house.js"></script>
 </body>
 
 </html>

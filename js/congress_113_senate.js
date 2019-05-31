@@ -10,7 +10,7 @@ fetch("https://api.propublica.org/congress/v1/113/senate/members.json",
 	.then(res => res.json())
 
 	.then(data => {
-		app.members = data.results[0].members;
+		members = data.results[0].members;
 		iniciar();
 			})
 

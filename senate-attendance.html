@@ -8,6 +8,7 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
 	</script>
 	<link rel="stylesheet" href="css/style.css">
+	<script type="text/javascript" src="framework/vue.js"></script>
 	<title>Senate - Attendance</title>
 </head>
 
@@ -32,8 +33,8 @@
 							Congress 113
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="#">Senate</a>
-							<a class="dropdown-item" href="house-starter-page.html">House</a>
+							<a class="dropdown-item" href="senate.html">Senate</a>
+							<a class="dropdown-item" href="house.html">House</a>
 						</div>
 					</li>
 					<li class="nav-item dropdown">
@@ -79,6 +80,21 @@
 					</tr>
 				</thead>
 				<tbody id="tabla-cantidad">
+					<tr>
+						<td>Republicans</td>
+						<td>{{statistics['number-of-republicans']}}</td>
+						<td>{{statistics['republicans-average-votes-with-party']}}</td>
+					</tr>
+					<tr>
+						<td>Democrats</td>
+						<td>{{statistics['number-of-democrats']}}</td>
+						<td>{{statistics['democrats-average-votes-with-party']}}</td>
+					</tr>
+					<tr>
+						<td>Independents</td>
+						<td>{{statistics['number-of-independents']}}</td>
+						<td>{{statistics['democrats-average-votes-with-party']}}</td>
+					</tr>
 				</tbody>
 			</table>
 			<h2>Least Engaged (Bottom 10% Attendance)</h2>
@@ -107,9 +123,10 @@
 			</table>
 		</div>
 	</div>
-	<script src="js/congress_113_senate.js"></script>
-	<script src="js/main.js"></script>
 	<script src="js/statistics.js"></script>
+	<script src="js/congress_113_senate.js"></script>
+	
+	
 </body>
 
 </html>

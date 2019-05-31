@@ -9,7 +9,7 @@
     </script>
     <link rel="stylesheet" href="css/style.css">
     <script type="text/javascript" src="framework/vue.js"></script>
-    <script src="js/congress_113_senate.js"></script>
+    
     <title>Senate</title>
 </head>
 
@@ -81,9 +81,9 @@
                 <div class="d-flex justify-content-between">
                     <div>
                         <label>Filter by Party:</label>
-                        <label><input type="checkbox" value="R" name="" id="R" checked onchange="iniciar()">Republican</label>
-                        <label><input type="checkbox" value="D" name="" id="D" checked onchange="iniciar()">Democrat</label>
-                        <label><input type="checkbox" value="I" name="" id="I" checked onchange="iniciar()">Independent</label>
+                        <label><input type="checkbox" value="R" name="party" id="R" checked onchange="iniciar()">Republican</label>
+                        <label><input type="checkbox" value="D" name="party" id="D" checked onchange="iniciar()">Democrat</label>
+                        <label><input type="checkbox" value="I" name="party" id="I" checked onchange="iniciar()">Independent</label>
                     </div>
                     <div>
                         <label for="selectstate">Filter by State:</label>
@@ -155,7 +155,7 @@
                     </tr>
                 </thead>
                 <tbody id="tabla">
-                    <tr v-for="value in filtrado">
+                    <tr v-for="value in members">
                         <td>{{value.first_name}} {{value.middle_name}} {{value.last_name}}</td>
                         <td>{{value.party}}</td>
                         <td>{{value.state}}</td>
@@ -169,11 +169,9 @@
             <small>&copy; 2019 TGIF | All Rights Reserved</small>
         </footer>
     </div>
-    <script type="text/javascript">
-    	
-    </script>
+   
     <script src="js/main.js"></script>
-    
+    <script src="js/congress_113_senate.js"></script>
 </body>
 
 </html>
