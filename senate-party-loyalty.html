@@ -7,12 +7,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
+    <script type="text/javascript" src="framework/vue.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <title>Senate - party loyalty</title>
 </head>
 
 <body>
-    <div id="container">
+    <div class="container" id="app">
         <header class="wrapper">
             <div class="item1">
                 <a href="index-html"><img src="img/WhatsApp Image 2019-04-22 at 12.01.11.jpeg" alt="TGIF-logo" class="img-fluid"></a>
@@ -69,6 +70,21 @@
                     </tr>
                 </thead>
                 <tbody id="tabla-cantidad">
+                    <tr>
+                        <td>Republicans</td>
+                        <td>{{statistics['number-of-republicans']}}</td>
+                        <td>{{statistics['republicans-average-votes-with-party']}}</td>
+                    </tr>
+                    <tr>
+                        <td>Democrats</td>
+                        <td>{{statistics['number-of-democrats']}}</td>
+                        <td>{{statistics['democrats-average-votes-with-party']}}</td>
+                    </tr>
+                    <tr>
+                        <td>Independents</td>
+                        <td>{{statistics['number-of-independents']}}</td>
+                        <td>{{statistics['democrats-average-votes-with-party']}}</td>
+                    </tr>
                 </tbody>
             </table>
             <h2>Least Loyal (Bottom 10% of Party)</h2>
@@ -81,6 +97,11 @@
                     </tr>
                 </thead>
                 <tbody id="tabla1">
+                    <tr v-for="element in statistics['least-loyal']">
+                        <td>{{element.first_name}} {{element.middle_name}} {{element.last_name}}</td>
+                        <td>{{element.total_votes}}</td>
+                        <td>{{element.votes_with_party_pct}}</td>
+                    </tr>
                 </tbody>
             </table>
             <h2>Most Loyal (Top 10% of Party)</h2>
@@ -93,18 +114,17 @@
                     </tr>
                 </thead>
                 <tbody id="tabla2">
+                    <tr v-for="element in statistics['most-loyal']">
+                        <td>{{element.first_name}} {{element.middle_name}} {{element.last_name}}</td>
+                        <td>{{element.total_votes}}</td>
+                        <td>{{element.votes_with_party_pct}}</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
     </div>
-    <script src="js/congress_113_senate.js"></script>
-    <script src="js/main.js"></script>
     <script src="js/statistics.js"></script>
-    <script>
-    window.onload = function() {
-        generarTabla("least-loyal", "most-loyal", false);
-    }
-    </script>
+    <script src="js/congress_113_senate.js"></script>
 </body>
 
 </html>

@@ -12,8 +12,6 @@ fetch("https://api.propublica.org/congress/v1/113/senate/members.json",
 	.then(data => {
 		members = data.results[0].members;
 		iniciar();
-			})
-
+		})
 	
-
 	.catch(err => console.log(err));
