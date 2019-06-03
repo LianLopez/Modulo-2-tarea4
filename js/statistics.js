@@ -46,7 +46,7 @@ function iniciar() {
         members.sort((a, b) => ascendente ? b.votes_with_party_pct - a.votes_with_party_pct : a.votes_with_party_pct - b.votes_with_party_pct)
         var i = 0
         while (i < limite || members[i].votes_with_party_pct == members[i - 1].votes_with_party_pct) {
-            sorteredMembers.push(members[i])
+            sorteredMembers.push(members[i] )
             i++
         }
 
@@ -55,10 +55,11 @@ function iniciar() {
 
     function generarArrayEngaged(ascendente) {
         var limite = Math.round(members.length * 0.10)
-        var sorteredMembers = []
+        var sorteredMembers = [];
         members.sort((a, b) => ascendente ? b.missed_votes_pct - a.missed_votes_pct : a.missed_votes_pct - b.missed_votes_pct)
         var i = 0
         while (i < limite || members[i].missed_votes_pct == members[i - 1].missed_votes_pct) {
+
             sorteredMembers.push(members[i])
             i++
         }
@@ -68,8 +69,9 @@ function iniciar() {
 
     miApp2.statistics["most-loyal"] = generarArrayLoyal(true)
     miApp2.statistics["least-loyal"] = generarArrayLoyal(false)
-    miApp2.statistics["most-engaged"] = generarArrayEngaged(true)
-    miApp2.statistics["least-engaged"] = generarArrayEngaged(false)
+
+    miApp2.statistics["least-engaged"] = generarArrayEngaged(true)
+    miApp2.statistics["most-engaged"] = generarArrayEngaged(false)
     
 }
 
