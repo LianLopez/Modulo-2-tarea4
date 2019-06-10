@@ -12,7 +12,6 @@ function iniciar() {
     miApp.members = miFiltro(members);
 }
 
-
 var miApp = new Vue({
     el: '#app',
     data: {

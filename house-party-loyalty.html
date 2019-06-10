@@ -99,7 +99,7 @@
                 <tbody>
                     <tr v-for="element in statistics['least-loyal']">
                         <td>{{element.first_name}} {{element.middle_name}} {{element.last_name}}</td>
-                        <td>{{element.}}</td>
+                        <td>{{Math.round((element.total_votes - element.missed_votes) * element.votes_with_party_pct / 100)}}</td>
                         <td>{{element.votes_with_party_pct}}</td>
                     </tr>
                 </tbody>
@@ -116,7 +116,7 @@
                 <tbody>
                     <tr v-for="element in statistics['most-loyal']">
                         <td>{{element.first_name}} {{element.middle_name}} {{element.last_name}}</td>
-                        <td>{{element.votes_with_party}}</td>
+                        <td>{{Math.round((element.total_votes- element.missed_votes) * element.votes_with_party_pct / 100)}}</td>
                         <td>{{element.votes_with_party_pct}}</td>
                     </tr>
                 </tbody>
