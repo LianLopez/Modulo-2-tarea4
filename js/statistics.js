@@ -3,7 +3,7 @@ var members = [];
 var miApp2 = new Vue({
     el: '#app',
     data: {
-        statistics : {
+        statistics: {
             "number-of-democrats": 0,
             "number-of-republicans": 0,
             "number-of-independents": 0,
@@ -22,9 +22,6 @@ var miApp2 = new Vue({
 
 function iniciar() {
 
-    console.log(members);
-
-
     miApp2.statistics["total"] = members.length;
 
     var democrats = members.filter(member => member.party == "D");
@@ -40,83 +37,35 @@ function iniciar() {
     independents.length > 0 ? miApp2.statistics["independents-average-votes-with-party"] = Math.round(independents.map(member => member.votes_with_party_pct).reduce((memberAnterior, member) => memberAnterior + member) / independents.length) : true
     members.length > 0 ? miApp2.statistics["total-average"] = Math.round(members.map(member => member.votes_with_party_pct).reduce((memberAnterior, member) => memberAnterior + member) / miApp2.statistics["total"]) : true
 
-    function generarArrayLoyal(ascendente) {
-        var limite = Math.round(members.length * 10) / 100
-        var sorteredMembers = []
-        members.sort((a, b) => ascendente ? b.votes_with_party_pct - a.votes_with_party_pct : a.votes_with_party_pct - b.votes_with_party_pct)
-        var i = 0
-        while (i < limite || members[i].votes_with_party_pct == members[i - 1].votes_with_party_pct) {
-            sorteredMembers.push(members[i] )
-            i++
-        }
-
-        return sorteredMembers
-    }
-
-    function generarArrayEngaged(ascendente) {
-        var limite = Math.round(members.length * 0.10)
-        var sorteredMembers = [];
-        members.sort((a, b) => ascendente ? b.missed_votes_pct - a.missed_votes_pct : a.missed_votes_pct - b.missed_votes_pct)
-        var i = 0
-        while (i < limite || members[i].missed_votes_pct == members[i - 1].missed_votes_pct) {
-
-            sorteredMembers.push(members[i])
-            i++
-        }
-        return sorteredMembers
-
-    }
-
     miApp2.statistics["most-loyal"] = generarArrayLoyal(true)
     miApp2.statistics["least-loyal"] = generarArrayLoyal(false)
 
     miApp2.statistics["least-engaged"] = generarArrayEngaged(true)
     miApp2.statistics["most-engaged"] = generarArrayEngaged(false)
-    
+
 }
 
+function generarArrayLoyal(ascendente) {
+    var limite = Math.round(members.length * 10) / 100
+    var sorteredMembers = []
+    members.sort((a, b) => ascendente ? b.votes_with_party_pct - a.votes_with_party_pct : a.votes_with_party_pct - b.votes_with_party_pct)
+    var i = 0
+    while (i < limite || members[i].votes_with_party_pct == members[i - 1].votes_with_party_pct) {
+        sorteredMembers.push(members[i])
+        i++
+    }
 
-
-/*
-function generarTabla(key1, key2, page) {
-    var htmlTablaCantidad = ""
-    htmlTablaCantidad += "<tr>"
-    htmlTablaCantidad += "<td>Republicans</td>"
-    htmlTablaCantidad += "<td>" + statistics["number-of-republicans"] + "</td>"
-    htmlTablaCantidad += "<td>" + statistics["republicans-average-votes-with-party"] + "</td>"
-    htmlTablaCantidad += "</tr>"
-    htmlTablaCantidad += "<tr>"
-    htmlTablaCantidad += "<td>Democrats</td>"
-    htmlTablaCantidad += "<td>" + statistics["number-of-democrats"] + "</td>"
-    htmlTablaCantidad += "<td>" + statistics["democrats-average-votes-with-party"] + "</td>"
-    htmlTablaCantidad += "</tr>"
-    htmlTablaCantidad += "<tr>"
-    htmlTablaCantidad += "<td>Independents</td>"
-    htmlTablaCantidad += "<td>" + statistics["number-of-independents"] + "</td>"
-    htmlTablaCantidad += "<td>" + statistics["independents-average-votes-with-party"] + "</td>"
-    htmlTablaCantidad += "</tr>"
-    htmlTablaCantidad += "<td>Total</td>"
-    htmlTablaCantidad += "<td>" + statistics["total"] + "</td>"
-    htmlTablaCantidad += "<td>" + statistics["total-average"] + "</td>"
-    htmlTablaCantidad += "</tr>"
-
-    document.getElementById("tabla-cantidad").innerHTML = htmlTablaCantidad
-
-    document.getElementById("tabla2").innerHTML = statistics[key1].map(element => {
-        var tabla1 = ""
-        tabla1 += "<tr><td>" + element.first_name
-        element.middle_name == null ? tabla1 += " " : tabla1 += " " + element.middle_name + " "
-        tabla1 += element.last_name + "</a></td>"
-        page ? tabla1 += "<td>" + element.missed_votes + "</td><td>" + element.missed_votes_pct + "</td>" : tabla1 += "<td>" + (element.total_votes - element.missed_votes) + "</td><td>" + element.votes_with_party_pct + "</td>"
-        return tabla1
-    }).join("")
-    document.getElementById("tabla1").innerHTML = statistics[key2].map(element => {
-        var tabla2 = ""
-        tabla2 += "<tr><td>" + element.first_name
-        element.middle_name == null ? tabla2 += " " : tabla2 += " " + element.middle_name + " "
-        tabla2 += element.last_name + "</a></td>"
-        page ? tabla2 += "<td>" + element.missed_votes + "</td><td>" + element.missed_votes_pct + "</td>" : tabla2 += "<td>" + (element.total_votes - element.missed_votes) + "</td><td>" + element.votes_with_party_pct + "</td>"
-        return tabla2
-    }).join("")
+    return sorteredMembers
 }
-*/
+
+function generarArrayEngaged(ascendente) {
+    var limite = Math.round(members.length * 0.10)
+    var sorteredMembers = [];
+    members.sort((a, b) => ascendente ? b.missed_votes_pct - a.missed_votes_pct : a.missed_votes_pct - b.missed_votes_pct)
+    var i = 0
+    while (i < limite || members[i].missed_votes_pct == members[i - 1].missed_votes_pct) {
+        sorteredMembers.push(members[i])
+        i++
+    }
+    return sorteredMembers
+}
